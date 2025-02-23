@@ -1,16 +1,22 @@
+import DanhSach from '@/components/danhsach/danhsach';
+import Input from '@/components/input/input';
 import { useState } from 'react';
-import { View, Text, StyleSheet, Button, TextInput} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function App() {
-  const [per, setper] = useState<any>()
+  const [data, setdata] = useState<DanhSach[]>([{ id: 1, name: 'John', age: 25 },
+    { id: 2, name: 'Jane', age: 30 },
+    { id: 3, name: 'Bob', age: 35 },
+    { id: 4, name: 'Alice', age: 20 },
+    { id: 5, name: 'Mike', age: 40 },])
 
   return (
     <View style={styles.container}>
-      <TextInput keyboardType='numeric' onChangeText={value => setper(value)} style={styles.input}></TextInput>
-      <Text style={styles.text}>{per}</Text>
-      <Button
-    title="Click me"
-  />
+      <Input />
+    <View>
+      <Text style={{fontSize: 30, backgroundColor: "#3f3f7f"}}>danh sách</Text>
+      <DanhSach dataDS={data} />
+    </View>
     </View>
   );
 }
@@ -29,11 +35,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     marginBottom: 10,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+    width: '90%'
   },
 });
